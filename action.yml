@@ -8,9 +8,6 @@ inputs:
   params:
     description: 'Servers paramaters'
     required: true
-  authorized_keys:
-    description: 'the public ssh authorized keys'
-    required: true
 outputs:
   return:
     description: 'Return of the action'
@@ -19,4 +16,3 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ fromJson(inputs.params) }}
-    - ${{ inputs.authorized_keys }}
