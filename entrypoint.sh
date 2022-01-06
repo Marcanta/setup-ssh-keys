@@ -6,9 +6,9 @@ jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password
   while IFS=$'\t' read -r user port ip password name; do
     echo "processing $name...\n"
     echo 'sshpass -p $password ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $port $user@$ip "mkdir ~/.ssh"'
-    sshpass -p $password ssh -v -p $port $user@$ip "mkdir ~/.ssh"
+    sshpass -p $password ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $port $user@$ip "mkdir ~/.ssh"
     echo "\n 2nd command, home: $HOME \n"
-    echo 'sshpass -p $password scp -prv -P $port authorized_keys $user@$ip:~/.ssh/authorized_keys'
+    echo 'sshpass -p $password scp -o StrictHostKeyChecking=no -o ConnectTimeout=30 -pr -P $port authorized_keys $user@$ip:~/.ssh/authorized_keys'
     sshpass -p $password scp -o StrictHostKeyChecking=no -o ConnectTimeout=30 -pr -P $port authorized_keys $user@$ip:~/.ssh/authorized_keys
   done
 
