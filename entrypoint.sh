@@ -3,8 +3,6 @@
 params=$1
 authorized_keys=$2
 
-echo $authorized_keys > authorized_keys
-
 jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password, .name]) | .[] | @tsv' <<< $params |
   while IFS=$'\t' read -r user port ip password name; do
     echo "$port and $ip and $password and $name and $user"
