@@ -15,4 +15,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ fromJson(inputs.params) }}
+    - ${{ fromJSON(inputs.params) }}
