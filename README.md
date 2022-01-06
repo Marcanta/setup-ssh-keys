@@ -43,5 +43,6 @@ TODO
 ```yaml
 uses: Marcanta/setup-ssh-keys@master
 with:
-    params: ${{ secrets }}
+    params: ${{ <your_servers_secrets> }}
+    authorized_keys: ${{ <your_authorized_keys_file> }}
 ```
