@@ -1,0 +1,21 @@
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  setup-ssh-keys:
+    runs-on: ubuntu-latest
+    name: send keys to servers
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup SSH Keys action step
+        uses: ./ # Uses an action in the root directory
+        id: ssh-keys
+        with:
+          params: ${{secrets.SERVERS}}
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
