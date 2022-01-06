@@ -10,13 +10,13 @@ _example:_
 ```json
 {
     "<SERVER_1_NAME>": {
-        "port": <port_number>,
+        "port": "<port_number>",
         "ip": "<server_ip>",
         "password": "<server_password>",
         "user": "<server_username>"
     },
     "<SERVER_2_NAME>": {
-        "port": <port_number>,
+        "port": "<port_number>",
         "ip": "<server_ip>",
         "password": "<server_password>",
         "user": "<server_username>"
