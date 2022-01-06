@@ -1,0 +1,22 @@
+name: 'Setup SSH Keys'
+description: 'GitHub Actions for send ssh keys to remote servers'
+author: 'Marcanta <aime.marcant@hotmail.fr>'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  params:
+    description: 'Servers paramaters'
+    required: true
+  authorized_keys:
+    description: 'the public ssh authorized keys'
+    required: true
+outputs:
+  return:
+    description: 'Return of the action'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ fromJson(inputs.params) }}
+    - ${{ inputs.authorized_keys }}
