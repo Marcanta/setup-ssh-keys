@@ -2,6 +2,7 @@
 
 params=$1
 echo $params > config.json
+ls
 authorized_keys_path=$2
 
 jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password, .name]) | .[] | @tsv' config.json |
