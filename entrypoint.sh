@@ -1,10 +1,10 @@
 #!/bin/bash
 
 params=$1
-echo $params
+echo $params > config.json
 authorized_keys_path=$2
 
-jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password, .name]) | .[] | @tsv' <<< $params |
+jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password, .name]) | .[] | @tsv' config.json |
   while IFS=$'\t' read -r user port ip password name; do
     echo "processing $name..."
 #     sshpass -p $password ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $port $user@$ip "mkdir ~/.ssh"
