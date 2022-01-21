@@ -1,6 +1,7 @@
 #!/bin/bash
 
 params=$1
+echo $params
 authorized_keys_path=$2
 
 jq -r 'to_entries | map(.value+{name: .key}) | map([.user, .port, .ip, .password, .name]) | .[] | @tsv' <<< $params |
