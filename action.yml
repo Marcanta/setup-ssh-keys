@@ -11,8 +11,10 @@ inputs:
 outputs:
   return:
     description: 'Return of the action'
+    value: ${{steps..outputs.time}}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.params }}
+  using: "composite"
+  steps:
+    - id: scp-send
+      run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.params }} ${{ github.action_path }}/authorized_keys
+      shell: bash

@@ -2,6 +2,8 @@
 
 this action send authorized ssh keys on your servers.
 
+> On the branch without-docker make sure these dependencies are installed: `ca-certificates`, `bash`,  `curl`,  `jq`,  `openssh`, `sshpass`
+
 ## Inputs
 
 ### `params`
