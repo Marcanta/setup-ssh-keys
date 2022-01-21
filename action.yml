@@ -11,7 +11,7 @@ inputs:
 outputs:
   return:
     description: 'Return of the action'
-    value: ${{steps..outputs.time}}
+    value: ${{steps.scp-send.outputs.time}}
 runs:
   using: "composite"
   steps:
